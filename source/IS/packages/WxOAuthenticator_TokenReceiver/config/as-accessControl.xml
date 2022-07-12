@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?><config>
+<autoConfig>
+    <accessControl>
+
+      <!-- Integration Server users -->
+      <user name="WxOAuthenticatorUser" updateIfExists="true" deleteOnUnload="true" password="${pkg:WxOAuthenticatorCommon;com.softwareag.wx.oauthenticator.user.password}">
+        <member group="WxOAuthenticatorGroup" />  
+      </user>
+
+      <!-- Integration Server groups-->
+      <group name="WxOAuthenticatorGroup" updateIfExists="true" deleteOnUnload="true"/>
+
+      <acl name="WxOAuthenticator_StoreToken" updateIfExists="true" deleteOnUnload="true">
+        <member group="WxOAuthenticatorGroup" />
+        <member group="Administrators" />
+      </acl>
+
+
+      <service name="com.softwareag.wx.oauthenticator_receiver">
+        <executeACL enforce="topLevelOnly">WxOAuthenticator_Internal</executeACL>  <!-- enforce and name can be set independently -->
+        <browseACL>WxOAuthenticator_Internal</browseACL>
+        <readACL>WxOAuthenticator_Internal</readACL>
+        <writeACL>WxOAuthenticator_Internal</writeACL>
+      </service>
+
+      <service name="com.softwareag.wx.oauthenticator_receiver.pub.service:storeToken">
+        <executeACL enforce="topLevelOnly">WxOAuthenticator_StoreToken</executeACL>  <!-- enforce and name can be set independently -->
+        <browseACL>WxOAuthenticator_Internal</browseACL>
+        <readACL>WxOAuthenticator_Internal</readACL>
+        <writeACL>WxOAuthenticator_Internal</writeACL>
+      </service>
+
+  </accessControl>
+
+</autoConfig>
+</config>

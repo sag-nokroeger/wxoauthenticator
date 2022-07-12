@@ -1,0 +1,4 @@
+#The password for the user WxOAuthenticator_User. When the token is retrieved on one IS and then transfered via HTTP to anothe IS (to keep client_id and client_secret seperated from the actual service using the OAuth2 token)
+com.softwareag.wx.oauthenticator.user.password=[[encrypted:WX_OAUTHENTICATOR_USER_PASSWORD]]
+wx.config.incl=as-accessControl.xml
+wx.config.autoSetup.execute=true

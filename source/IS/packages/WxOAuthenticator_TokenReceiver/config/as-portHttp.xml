@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?><config>
+<autoConfig>
+	<ports>
+		<http alias="secretUpdatePort" updateIfExists="true" autoStart="true" autoShutdown="false" destroyOnShutdown="true">
+			<package>WxOAuthenticator_TokenReceiver</package>   <!-- optional -->
+			<description>HTTP Ports for receiving tokens obtained by WxOAuthenticator</description>
+			<port>5554</port>
+			<bindAddress>127.0.0.1</bindAddress>   <!-- optional -->
+			<backlog>200</backlog>
+			<keepAliveTimeout>20000</keepAliveTimeout>
+			<threadPool>
+				<enabled>true</enabled>   <!-- boolean -->
+				<min>1</min>  <!-- required, if "enabled" == true; otherwise to be removed -->
+				<max>2</max> <!-- required, if "enabled" == true; otherwise to be removed -->
+				<priority>5</priority>  <!-- required, if "enabled" == true; otherwise to be removed -->
+			</threadPool>
+			<serviceAccess>   <!-- optional, default: mode = global default -->
+				<mode>deny</mode>  <!-- allow  = allow by default
+										deny   = deny by default -->
+				<exceptionList cleanBeforeAdding="true">
+					<exception>com.softwareag.wx.oauthenticator.pub.service:storeToken</exception>
+				</exceptionList>
+			</serviceAccess>
+			<ipAccess> <!-- optional, default: mode = global default -->
+				<mode>deny</mode>  <!-- allow  = allow by default
+										deny   = deny by default -->
+				<exceptionList cleanBeforeAdding="true">
+					<exception>127.0.0.1</exception>
+				</exceptionList>
+			</ipAccess>
+		</http>
+    </ports>
+</autoConfig>
+</config>
+	

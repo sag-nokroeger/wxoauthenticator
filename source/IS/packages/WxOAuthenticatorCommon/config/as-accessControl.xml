@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?><config>
+<autoConfig>
+	<!-- 
+		ACL for protecting WxOAuthenticator services which should not be accessed from the outside.
+		 -->
+    <accessControl>
+      <acl name="WxOAuthenticator_Internal" updateIfExists="true" deleteOnUnload="true">
+        <member group="Administrators" />
+      </acl>
+  </accessControl>
+</autoConfig>
+</config>

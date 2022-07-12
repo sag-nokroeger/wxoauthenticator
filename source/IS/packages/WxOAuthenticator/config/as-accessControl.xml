@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?><config>
+<autoConfig>
+    <accessControl>
+
+      <service name="com.softwareag.wx.oauthenticator">
+        <executeACL enforce="topLevelOnly">WxOAuthenticator_Internal</executeACL>  <!-- enforce and name can be set independently -->
+        <browseACL>WxOAuthenticator_Internal</browseACL>
+        <readACL>WxOAuthenticator_Internal</readACL>
+        <writeACL>WxOAuthenticator_Internal</writeACL>
+      </service>
+
+  </accessControl>
+
+</autoConfig>
+</config>

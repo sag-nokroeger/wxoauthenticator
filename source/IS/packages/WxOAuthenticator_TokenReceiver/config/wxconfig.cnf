@@ -1,0 +1,4 @@
+wx.config.incl=as-portHttp.xml
+wx.config.incl=as-accessControl.xml
+
+wx.config.autoSetup.execute=true

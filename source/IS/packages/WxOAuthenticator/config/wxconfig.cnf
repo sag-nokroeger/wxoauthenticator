@@ -1,0 +1,3 @@
+wx.config.incl=managedtokens.xml
+wx.config.incl=as-accessControl.xml
+wx.config.autoSetup.execute=true

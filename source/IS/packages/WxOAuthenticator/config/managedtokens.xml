@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+    <!--
+        Configuration file containing information how to fetch tokens managed by WxOAuthenticator
+    -->
+    <managedTokens>
+        <managedToken> <!-- repeatable -->
+            <token_handle>EchoAPIToken</token_handle> <!-- internal ID used in the code to identify this specific token. Do not modify -->
+            <token_url>https://nokroeger.apigw-aw-us.webmethods.io/invoke/pub.apigateway.oauth2/getAccessToken</token_url> <!-- url used to retrieve a token. -->
+            <token_refresh_grace_time>0.8</token_refresh_grace_time> <!-- Factor used to calculate how long before expiery a new token will be obtained.
+                                                                          Example: with a setting of 0.8 and an expiery time of 1800 seconds, a new token will be obtained after
+                                                                          1800 * 0.8 = 1440 seconds
+                                                                        -->            
+            <credentials>
+                <grant_type>client_credentials</grant_type> <!-- currently, only client_credentials are supported -->
+                <scope>default</scope> <!-- the scope for which the token should be requested. Other settings (like resource and audience) are currently not supported. -->
+                <client_id>aef7692c-ebb8-4c52-bd53-0d4caa2f9e0b</client_id> <!-- The client id to request a token for. Recommendation for container use: get it from an environment variable, e.g. ${env:EchoAPIToken_ClientId} -->
+                <client_secret>[[encrypted:EchoAPIToken_Secret]]</client_secret> <!-- The client secret. Can be encrpyted (stored in IntegrationServer's password manager [[encrypted:EchoAPIToken_Secret]]) or taken from an environment variable -->
+            </credentials>
+            <!-- 
+            optional, if the token should be updated in another IS via an HTTP call.
+            If WxAuthenticator is running in the same IS this can be left out, the token will simply be written to the local outbound passwordstore.
+	            <update_token>
+	                <url>http://localhost:5554/invoke/...</url>
+	                <auth>
+	                	<user>WxOAuthenticatorUser</user>
+	                	<pass>[[encrypted:EchoAPITokenUpdateSecret]]</pass>
+	                <auth>
+	            </update_token>
+            -->
+        </managedToken>
+    </managedTokens>
+</config>
